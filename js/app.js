@@ -468,10 +468,12 @@ function initQuickLinks() {
     Store.set('links', links);
   }
 
-  // Normalize URL — prepend https:// if no scheme
+  // Normalize URL — simpan persis apa adanya, hanya prepend https:// jika tidak ada scheme sama sekali
   function normalizeUrl(url) {
-    if (!/^https?:\/\//i.test(url)) return 'https://' + url;
-    return url;
+    // Jika sudah ada scheme (http/https/ftp dll), kembalikan apa adanya
+    if (/^[a-zA-Z][a-zA-Z0-9+\-.]*:\/\//.test(url)) return url;
+    // Tidak ada scheme — prepend https://
+    return 'https://' + url;
   }
 
   // Render all link chips
@@ -531,18 +533,7 @@ function initQuickLinks() {
       showError(linkError, 'URL tidak boleh kosong.');
       return;
     }
-    if (rawUrl.length > 2048) {
-      showError(linkError, 'URL terlalu panjang (maks 2048 karakter).');
-      return;
-    }
-
     const url = normalizeUrl(rawUrl);
-
-    const isDuplicate = links.some(l => l.url === url);
-    if (isDuplicate) {
-      showError(linkError, 'URL ini sudah ada di Quick Links.');
-      return;
-    }
 
     if (links.length >= 50) {
       showError(linkError, 'Maksimal 50 quick links.');
@@ -598,3 +589,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initTodoList();
   initQuickLinks();
 });
+
+
