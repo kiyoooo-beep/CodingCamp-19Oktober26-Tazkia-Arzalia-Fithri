@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    // Apply theme BEFORE first paint to avoid flash
+    (function () {
+      const saved = localStorage.getItem('theme');
+      const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', saved || preferred);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ===== STORAGE NOTICE ===== -->
+  <div id="storage-notice" class="storage-notice hidden">
+    ⚠️ Local Storage tidak tersedia. Data tidak akan tersimpan.
+  </div>
+
+  <div class="container">
+
+    <!-- ===== HEADER: THEME TOGGLE ===== -->
+    <header class="top-bar">
+      <button id="theme-toggle" class="btn-icon" aria-label="Toggle tema terang/gelap">🌙</button>
+    </header>
+
+    <!-- ===== GREETING WIDGET ===== -->
+    <section class="card greeting-card">
+      <div id="greeting" class="greeting-text">Halo!</div>
+      <div id="clock" class="clock-text">--:--:-- --</div>
+      <div id="date-display" class="date-text">--</div>
+
+      <div class="name-form">
+        <input
+          type="text"
+          id="name-input"
+          class="input-field"
+          placeholder="Masukkan namamu..."
+          maxlength="50"
+          aria-label="Nama tampilan"
+        />
+        <button id="name-save" class="btn btn-primary">Simpan</button>
+      </div>
+      <div id="name-error" class="error-msg hidden"></div>
+    </section>
+
+    <div class="grid-two">
+
+      <!-- ===== POMODORO TIMER ===== -->
+      <section class="card timer-card">
+        <h2 class="section-title">⏱ Focus Timer</h2>
+        <div id="timer-display" class="timer-display">25:00</div>
+
+        <div class="timer-controls">
+          <button id="timer-start" class="btn btn-primary">▶ Mulai</button>
+          <button id="timer-stop" class="btn btn-secondary">⏸ Stop</button>
+          <button id="timer-reset" class="btn btn-ghost">↺ Reset</button>
+        </div>
+
+        <div class="timer-duration-row">
+          <input
+            type="number"
+            id="timer-duration-input"
+            class="input-field input-small"
+            min="1"
+            max="99"
+            placeholder="menit"
+            aria-label="Durasi timer dalam menit"
+          />
+          <button id="timer-duration-save" class="btn btn-secondary">Set</button>
+        </div>
+        <div id="timer-error" class="error-msg hidden"></div>
+      </section>
+
+      <!-- ===== TO-DO LIST ===== -->
+      <section class="card todo-card">
+        <h2 class="section-title">✅ To-Do List</h2>
+
+        <div class="add-form">
+          <input
+            type="text"
+            id="todo-input"
+            class="input-field"
+            placeholder="Tambah tugas baru..."
+            maxlength="200"
+            aria-label="Deskripsi tugas baru"
+          />
+          <button id="todo-add" class="btn btn-primary">+</button>
+        </div>
+        <div id="todo-error" class="error-msg hidden"></div>
+
+        <ul id="todo-list" class="todo-list" aria-label="Daftar tugas"></ul>
+      </section>
+
+    </div>
+
+    <!-- ===== QUICK LINKS ===== -->
+    <section class="card links-card">
+      <h2 class="section-title">🔗 Quick Links</h2>
+
+      <div class="add-form links-form">
+        <input
+          type="text"
+          id="link-label-input"
+          class="input-field"
+          placeholder="Label (misal: Google)"
+          maxlength="50"
+          aria-label="Label link"
+        />
+        <input
+          type="text"
+          id="link-url-input"
+          class="input-field"
+          placeholder="URL (misal: google.com)"
+          maxlength="2048"
+          aria-label="URL link"
+        />
+        <button id="link-add" class="btn btn-primary">+ Tambah</button>
+      </div>
+      <div id="link-error" class="error-msg hidden"></div>
+
+      <div id="links-grid" class="links-grid" aria-label="Daftar quick links"></div>
+    </section>
+
+  </div><!-- /.container -->
+
+  <script src="js/app.js"></script>
+</body>
+</html>
