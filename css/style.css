@@ -473,3 +473,157 @@ body {
   display: none !important;
 }
 
+
+/* ============================================================
+   Responsive — Tablet (max 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px 12px;
+  }
+
+  .grid-two {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .greeting-card {
+    padding: 24px 16px;
+  }
+
+  .greeting-text {
+    font-size: 1.6rem;
+  }
+
+  .clock-text {
+    font-size: 2rem;
+  }
+
+  .timer-display {
+    font-size: 3rem;
+  }
+
+  .name-form {
+    max-width: 100%;
+  }
+}
+
+/* ============================================================
+   Responsive — Mobile (max 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  html {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 12px 10px;
+  }
+
+  .card {
+    padding: 16px 14px;
+    border-radius: 10px;
+  }
+
+  .greeting-card {
+    padding: 20px 14px;
+  }
+
+  .greeting-text {
+    font-size: 1.4rem;
+    min-height: auto;
+  }
+
+  .clock-text {
+    font-size: 1.8rem;
+  }
+
+  .date-text {
+    font-size: 0.875rem;
+  }
+
+  /* Timer — tombol sejajar penuh */
+  .timer-display {
+    font-size: 2.6rem;
+    margin-bottom: 14px;
+  }
+
+  .timer-controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+
+  .timer-controls .btn {
+    padding: 8px 4px;
+    font-size: 0.8rem;
+  }
+
+  .timer-duration-row {
+    width: 100%;
+  }
+
+  .timer-duration-row .input-small {
+    flex: 1;
+    width: auto;
+    text-align: left;
+  }
+
+  /* Form tambah todo & link — input di atas, tombol di bawah */
+  .add-form {
+    flex-direction: column;
+  }
+
+  .add-form .btn {
+    width: 100%;
+  }
+
+  .links-form {
+    flex-direction: column;
+  }
+
+  .links-form .btn {
+    width: 100%;
+  }
+
+  /* Name form */
+  .name-form {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .name-form .btn {
+    width: 100%;
+  }
+
+  /* Todo list — tinggi max dikurangi agar tidak overflow layar kecil */
+  .todo-list {
+    max-height: 260px;
+  }
+
+  /* Quick links chip lebih besar untuk touch */
+  .link-chip {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+
+  /* Tombol edit/hapus todo lebih mudah disentuh */
+  .btn-sm {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  /* Section title lebih kecil */
+  .section-title {
+    font-size: 0.875rem;
+    margin-bottom: 12px;
+  }
+
+  /* Theme toggle */
+  .btn-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+}
